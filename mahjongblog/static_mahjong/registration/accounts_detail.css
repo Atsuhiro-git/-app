@@ -1,0 +1,93 @@
+/* プロフィールコンテナ */
+.account-profile {
+    max-width: 480px;
+    margin: 2rem auto 3rem auto;
+    padding: 2rem 2.4rem;
+    background-color: #fff;
+    border-radius: 16px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    text-align: center;
+    font-family: 'Noto Sans JP', sans-serif;
+    color: #4b3b2b;
+  }
+  
+  /* 見出し */
+  .account-profile h1 {
+    font-weight: 900;
+    font-size: 1.9rem;
+    color: #388e3c;
+    margin-bottom: 2.2rem;
+    letter-spacing: 0.1em;
+    text-shadow: 1px 1px 0 #f2f2f2;
+  }
+  
+  /* アイコン画像 */
+  .account-profile img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #388e3c;
+    box-shadow: 0 3px 10px rgba(56, 142, 60, 0.25);
+    margin-bottom: 1.8rem;
+  }
+  
+  /* 名前・ひとことの段落 */
+  .account-profile p {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin: 0.7rem 0;
+    letter-spacing: 0.05em;
+    color: #5d4037;
+    word-break: break-word;
+  }
+  
+  /* 強調ラベル */
+  .account-profile p strong {
+    color: #388e3c;
+    min-width: 72px;
+    display: inline-block;
+  }
+  
+  /* リンクの親divを中央寄せ */
+.link-area {
+    text-align: center;
+}
+  /* リンクエリア */
+  div > a {
+    display: inline-block;
+    margin: 0 auto 1rem 0.9rem;
+    padding: 0.65em 1.8em;
+    font-weight: 700;
+    font-size: 1rem;
+    border-radius: 24px;
+    text-decoration: none;
+    color: #ece0b3;
+    background-color: #388e3c;
+    box-shadow: 0 3px 10px rgba(56, 142, 60, 0.35);
+    transition: background-color 0.3s ease;
+  }
+  
+  div > a:hover,
+  div > a:focus {
+    background-color: #256029;
+    outline: none;
+  }
+  
+  /* レスポンシブ対応 */
+  @media (max-width: 520px) {
+    .account-profile {
+      margin: 1.5rem 1rem 2.5rem 1rem;
+      padding: 1.8rem 1.6rem;
+    }
+  
+    .account-profile h1 {
+      font-size: 1.6rem;
+    }
+  
+    div > a {
+      margin: 0.6rem 0.7rem 0.8rem 0.7rem;
+      padding: 0.55em 1.4em;
+      font-size: 0.95rem;
+    }
+  }

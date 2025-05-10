@@ -1,0 +1,48 @@
+{% extends 'templates/home/base_home.html' %}
+
+{% block head %}
+    <meta charset="UTF-8" />
+    <title>記事詳細ページ</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/static_mahjong/home/post-detail.css">
+{% endblock %}
+
+{% block body %}
+<article class="post-detail">
+    <h1>{{ post.title }}</h1>
+    <p class="post-date">{{ post.created_at|date:"Y年m月d日" }}</p>
+
+    <div class="post-content">
+        {{ post.content|safe }}
+    </div>
+
+    {% if post.category %}
+        <p>カテゴリ: {{ post.category }}</p>
+    {% endif %}
+</article>
+
+<div class="link-wrapper">
+    <a href="/top">一覧に戻る</a>
+</div>
+
+<section class="recommended-posts">
+    <h2>おすすめ記事</h2>
+    {% if recommended_posts %}
+        <ul>
+        {% for rec_post in recommended_posts %}
+            <li>
+                <a href="{% url 'home:home/blog_post_detail' post_pk=rec_post.pk %}">
+                    {% if rec_post.image %}
+                        <img src="{{ rec_post.image.url }}" alt="{{ rec_post.title }}" style="width:100px; height:auto;">
+                    {% endif %}
+                    {{ rec_post.title }}
+                </a>
+            </li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>おすすめ記事はありません。</p>
+    {% endif %}
+</section>
+
+{% endblock %}

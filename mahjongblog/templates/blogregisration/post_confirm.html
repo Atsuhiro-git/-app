@@ -1,0 +1,32 @@
+{% extends 'templates/home/base_home.html' %}
+{% load static %}
+
+{% block head %}
+<meta charset="UTF-8" />
+<title>投稿内容の確認</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="/static_mahjong/blogregisration/posts-confirm.css">
+{% endblock %}
+
+{% block body %}
+<h1>投稿内容の確認</h1>
+
+<dl class="dl-confirm">
+    <dt class="col-sm-2">タイトル</dt>
+    <dd class="col-sm-10">{{ post_form.cleaned_data.title }}</dd>
+
+    <dt class="col-sm-2">本文</dt>
+    <dd class="col-sm-10">{{ post_form.cleaned_data.content|safe }}</dd>
+
+    <dt class="col-sm-2">タグ</dt>
+    <dd class="col-sm-10">{{ post_form.cleaned_data.tag }}</dd>
+
+</dl>
+
+<form method="post" enctype="multipart/form-data">
+    <h3>カバー画像を選んでください</h3>
+    {% csrf_token %}
+    {{ image_form.as_p }}
+    <button type="submit" name="confirm">投稿を確定する</button>
+</form>
+{% endblock %}

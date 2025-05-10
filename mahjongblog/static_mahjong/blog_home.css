@@ -1,0 +1,59 @@
+@charset "utf-8";
+
+html {
+    font-size: 100%;
+}
+
+body{
+    font-family: "Yu Gothic Medium";
+    line-height: 1.7;
+    color: white;
+}
+.header {
+    display: flex;
+    justify-content: var(--header-logo-align);
+    align-items: center;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+    height: 50px;
+    margin-bottom: -50px;
+    padding: 0 20px 0 16px;
+    border-bottom: .5px solid #E1E5EB;
+    box-sizing: border-box;
+    box-shadow: 0 0 3px rgba(0, 43, 107, .1);
+    background: var(--header-color);
+    font-size: 16px;
+  }
+  
+.wrapper{
+    margin: 0 auto;
+    padding: 0 4%;
+}
+
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    background-color: white;
+}
+
+.top-ver-nav{
+    display: flex;
+    font-size: 15px;
+    text-transform: uppercase;
+    margin-top: 34px;
+    list-style: none;
+}
+
+.top-ver-nav li{
+    margin-left: 36px;
+}
+
+.top-ver-nav a{
+    color: blue;
+}
+
+.top-ver-nav a:hover {
+    color: green;
+}

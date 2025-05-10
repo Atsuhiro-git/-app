@@ -1,0 +1,55 @@
+body {
+    font-family: "Yu Gothic", sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background: #f9f9f9;
+    color: #333;
+}
+
+header {
+    background-color: #3f3f3f;
+    color: white;
+    padding: 1rem;
+    text-align: center;
+}
+
+nav a {
+    color: #ddd;
+    margin: 0 10px;
+    text-decoration: none;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+main {
+    max-width: 800px;
+    margin: 2rem auto;
+    background: white;
+    padding: 2rem;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+h2, h3 {
+    color: #2e7d32;
+}
+
+.policy p {
+    margin-bottom: 1em;
+}
+
+.policy .date {
+    font-size: 0.9em;
+    color: #777;
+    margin-top: 2em;
+}
+
+footer {
+    text-align: center;
+    background-color: #3f3f3f;
+    color: white;
+    padding: 1rem 0;
+    margin-top: 2rem;
+}

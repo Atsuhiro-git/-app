@@ -1,0 +1,39 @@
+{% extends 'templates/home/base_home.html' %}
+{% load static %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'home/home_top.css' %}" />
+{% endblock %}
+
+{% block body %}
+<h1 class="tag-name">{{ tag_name }} の記事一覧</h1>
+<section class="posts-grid">
+  {% for post in posts %}
+  <article class="post-card" tabindex="0">
+    <a href="{% url 'home:home/blog_post_detail' post_pk=post.pk %}">
+      {% if post.image %}
+      <img src="{{ post.image.url }}" alt="画像説明" class="post-image" />
+      {% else %}
+      <img src="/media/home/kkrn_icon_user_11.png" alt="デフォルト画像" class="post-image" />
+      {% endif %}
+      <h2 class="post-title">{{ post.title }}</h2>
+    </a>
+
+    <li>
+        {% for plofile in plofiles %}
+            {% if plofile == post.author  %}
+                {% if plofile.icon %}
+                    <img src="{{ plofile.icon.url }}" alt="{{ plofile.name|default:'設定されていません' }}のアイコン" style="width:150px; height:150px; border-radius:50%;">
+                {% else %}
+                    <img src="/media/home/kkrn_icon_user_11.png" alt="デフォルトアイコン" style="width:150px; height:150px; border-radius:50%;">
+                {% endif %}
+                <p class="author">{{ post.author }}</p>
+            {% endif %}
+        {% endfor %}
+    </li>
+  </article>
+  {% empty %}
+  <p>このタグの投稿はありません。</p>
+  {% endfor %}
+</section>
+{% endblock %}

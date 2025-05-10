@@ -1,0 +1,149 @@
+/* category_list.css */
+
+/* 見出し装飾 */
+h1 {
+    text-align: center;
+    font-weight: bold;
+    color: #388e3c; /* 麻雀の緑色イメージ */
+    margin-bottom: 2rem;
+    letter-spacing: 0.1em;
+    text-shadow: 1px 1px 0 #fff;
+}
+
+/* ボタングループを横並びに */
+.button-group {
+    display: flex;
+    justify-content: center; /* 親幅の中央に寄せる */
+    gap: 1rem; /* ボタン間の隙間 */
+    margin-bottom: 2rem; /* 下に余白 */
+}
+
+/* 2つのボタンの幅は自動 */
+.button-group a.btn-success {
+    display: inline-block;
+    width: auto;
+    font-weight: bold;
+    letter-spacing: 0.05em;
+    box-shadow: 0 2px 4px rgba(56, 142, 60, 0.08);
+    transition: background 0.2s;
+}
+
+.button-group a.btn-success:hover {
+    background-color: #2e7031;
+}
+
+
+/* テーブルデザイン */
+.table {
+    background: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    margin-bottom: 2rem;
+}
+
+/* テーブルヘッダー */
+.table thead th {
+    background-color: #388e3c;
+    color: #fff;
+    text-align: center;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+}
+
+/* テーブルセル */
+.table tbody td {
+    vertical-align: middle;
+    text-align: center;
+}
+
+/* リスト名の“麻雀牌”風 */
+.table tbody td:first-child {
+    font-family: 'Noto Sans JP', 'Arial', sans-serif;
+    font-size: 1.1em;
+    background: #f2ede2;
+    border-radius: 4px;
+    box-shadow: 0 1px 2px rgba(100,100,100,0.08) inset;
+    padding: 0.75em 1em;
+    border: 1px solid #ece0b3;
+    color: #5d4037;
+    letter-spacing: 0.07em;
+}
+
+/* 編集ボタン */
+.btn-warning {
+    font-weight: bold;
+    border-radius: 20px;
+    padding: 0.3em 1.2em;
+    transition: background 0.2s;
+}
+.btn-warning:hover {
+    background-color: #ffb300;
+    color: #fff;
+}
+
+/* レスポンシブ調整 */
+@media (max-width: 576px) {
+    .table thead {
+        display: none;
+    }
+    .table, .table tbody, .table tr, .table td {
+        display: block;
+        width: 100%;
+    }
+    .table tr {
+        margin-bottom: 1rem;
+        background: #fff;
+        border-radius: 6px;
+        box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+    }
+    .table td {
+        text-align: left;
+        padding: 0.8em 1em;
+        border: none;
+        border-bottom: 1px solid #eee;
+        position: relative;
+    }
+    .table td:first-child {
+        border-radius: 6px 6px 0 0;
+    }
+    .table td:last-child {
+        border-radius: 0 0 6px 6px;
+    }
+
+    .button-group {
+        flex-direction: column;
+        gap: 0.8rem;
+    }
+    .button-group a.btn-success {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+.table tbody tr td a.name-edit-link {
+    display: inline-block;
+    padding: 0.25rem 0.6rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #0d6efd; /* Bootstrapのリンクカラー */
+    background-color: transparent;
+    border: 1px solid #0d6efd;
+    border-radius: 0.25rem;
+    text-decoration: none;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    margin-left: 0.5rem;
+  }
+  
+  /* ホバー時 */
+  .table tbody tr td a.name-edit-link:hover,
+  .table tbody tr td a.name-edit-link:focus {
+    color: #fff;
+    background-color: #0d6efd;
+    text-decoration: none;
+  }
+  
+  /* ボタンと隣接したリンクの間隔を調整 */
+  .table tbody tr td a.btn-sm {
+    margin-right: 0.5rem;
+  }

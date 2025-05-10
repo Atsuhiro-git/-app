@@ -1,0 +1,15 @@
+{% extends 'templates/home/base_home.html' %}
+{% load static %}
+
+{% block head %}
+<link rel="stylesheet" href="/static_mahjong/home/contact.css" />
+{% endblock %}
+
+{% block body %}
+<form method="POST" class="mx-3 mx-md-5">{% csrf_token %}
+	{{form}}
+	<div>
+		<button type="submit">送信</button>
+	</div>
+</form>
+{% endblock %}

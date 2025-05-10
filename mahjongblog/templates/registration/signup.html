@@ -1,0 +1,20 @@
+{% extends 'templates/home/base_home.html' %}
+
+{% block head %}
+<link rel="stylesheet" href="/static_mahjong/registration/signup_form.css">
+{% endblock %}
+
+{% block body %}
+    <div class="signup-container">
+        <h1>サインアップ</h1>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">サインアップ</button>
+        </form>
+        <div class="login-link">
+            <p>すでにアカウントをお持ちですか？ <a href="{% url 'login' %}">ログイン</a></p>
+        </div>
+    </div>
+{% endblock %}
+

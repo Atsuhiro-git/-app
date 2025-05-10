@@ -1,0 +1,199 @@
+/* home.css */
+
+/* 全体背景とフォント */
+body {
+    background-color: #f8f9fa;
+    font-family: 'Noto Sans JP', sans-serif;
+    padding: 2rem 1rem;
+}
+
+/* 見出し */
+h1 {
+    text-align: center;
+    color: #388e3c;
+    font-weight: bold;
+    letter-spacing: 0.1em;
+    margin-bottom: 2rem;
+    text-shadow: 1px 1px 0 #fff;
+    font-size: 40px;
+}
+
+h2 {
+    color: #5d4037;
+    font-weight: bold;
+    letter-spacing: 0.07em;
+    margin-top: 2.3rem;
+    margin-bottom: 1.1rem;
+}
+
+.btn-category {
+    font-size: 30px;
+    color: #256029;
+}
+/* 新規投稿・カテゴリーボタン */
+.btn-success {
+    background-color: #388e3c;
+    border-color: #388e3c;
+    font-weight: bold;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.8rem;
+    margin-right: 0.7rem;
+    border-radius: 22px;
+    box-shadow: 0 2px 6px rgba(56, 142, 60, 0.08);
+    transition: background 0.18s;
+}
+.btn-success:hover {
+    background-color: #256029;
+    border-color: #256029;
+}
+
+.btn-category {
+    background-color: #fffde7;
+    color: #8d6e63;
+    border: 1.5px solid #ece0b3;
+    font-weight: bold;
+    border-radius: 18px;
+    margin-bottom: 1.2rem;
+    margin-right: 0.7rem;
+    box-shadow: 0 2px 6px rgba(250, 200, 80, 0.07);
+    transition: background 0.18s;
+    width: 300px;
+    text-align: center;
+}
+.btn-category:hover {
+    background: #fff9c4;
+    color: #5d4037;
+    border-color: #fbc02d;
+}
+
+/* カテゴリー名表示 */
+.post_category {
+    margin-bottom: 0.3em;
+    font-size: 2em;
+    color: #388e3c;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+}
+
+/* 投稿リスト */
+ul.list-group {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 1.5px 6px rgba(56, 142, 60, 0.07), 0 1.5px 6px rgba(0,0,0,0.04);
+    padding: 0.8em 0.3em 0.8em 0.3em;
+}
+
+li.list-group-item {
+    background: #f2ede2;
+    border: 1.2px solid #ece0b3;
+    border-radius: 7px;
+    margin-bottom: 1em;
+    padding: 1.1em 1em;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 1px 2px rgba(56, 142, 60, 0.06) inset;
+    min-height: 56px;
+    transition: background 0.15s;
+}
+li.list-group-item:last-child {
+    margin-bottom: 0;
+}
+
+li.list-group-item strong {
+    color: #5d4037;
+    font-size: 1.13em;
+    letter-spacing: 0.06em;
+    font-size: 30px;
+}
+
+/* タグや日付 */
+li.list-group-item small {
+    color: #888;
+    font-size: 0.97em;
+}
+
+/* 投稿ID */
+li.list-group-item > p {
+    font-size: 0.97em;
+    color: #bdb76b;
+    margin: 0 1em 0 1em;
+    font-family: 'Noto Sans Mono', monospace;
+}
+
+/* 編集・削除ボタン */
+.btn-outline-primary {
+    border-radius: 16px;
+    font-size: 50px;
+    font-weight: bold;
+    border-width: 2px;
+    min-width: 68px;
+    transition: background 0.16s, color 0.16s;
+    margin-right: 100px;
+}
+.btn-outline-primary:hover {
+    background-color: #388e3c;
+    color: #fff;
+    border-color: #388e3c;
+}
+
+.btn-danger {
+    border-radius: 16px;
+    font-size: 50px;
+    font-weight: bold;
+    min-width: 68px;
+    background: #e53935;
+    border-color: #e53935;
+    transition: background 0.16s;
+    margin-right: 100px;
+}
+.btn-danger:hover {
+    background: #b71c1c;
+    border-color: #b71c1c;
+}
+
+/* メッセージ */
+.list-group + p,
+hr + h2 + p,
+.list-group + hr + h2 + p {
+    color: #888;
+    text-align: center;
+    margin-top: 1.5em;
+    font-size: 1.08em;
+}
+
+/* 区切り線 */
+hr {
+    border-top: 2px solid #ece0b3;
+    margin: 2.5rem 0 2.5rem 0;
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 576px) {
+    body {
+        padding: 0.7rem 0.2rem;
+    }
+    h1, h2 {
+        font-size: 1.2em;
+        margin-bottom: 1.1rem;
+        margin-top: 1.2rem;
+    }
+    ul.list-group {
+        padding: 0.5em 0.07em 0.5em 0.07em;
+    }
+    li.list-group-item {
+        flex-direction: column;
+        align-items: stretch;
+        min-height: 46px;
+        padding: 0.85em 0.7em;
+        margin-bottom: 0.7em;
+    }
+    li.list-group-item > p {
+        margin: 0.5em 0;
+    }
+    .btn-outline-primary, .btn-danger {
+        min-width: unset;
+        width: 100%;
+        margin-bottom: 0.3em;
+    }
+}

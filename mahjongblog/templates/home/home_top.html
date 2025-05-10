@@ -1,0 +1,110 @@
+{% extends 'templates/home/base_home.html' %}
+{% load static %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'home/home_top.css' %}" />
+{% endblock %}
+
+{% block body %}
+
+<h2>人気記事トップ5</h2>
+<section class="posts-grid popular-posts">
+  {% for post in popular_posts %}
+  <article class="post-card" tabindex="0">
+    <a href="{% url 'home:home/blog_post_detail' post_pk=post.pk %}">
+      {% if post.image %}
+      <img src="{{ post.image.url }}" alt="画像説明" class="post-image" />
+      {% else %}
+      <img src="/media/home/kkrn_icon_user_11.png" alt="デフォルト画像" class="post-image" />
+      {% endif %}
+      <h3>{{ post.title }}</h3>
+    </a>
+
+    <li>
+        {% for plofile in plofiles %}
+            {% if plofile == post.author  %}
+                {% if plofile.icon %}
+                    <img src="{{ plofile.icon.url }}" alt="{{ plofile.name|default:'設定されていません' }}のアイコン" style="width:70px; height:70px; border-radius:50%;">
+                {% else %}
+                    <img src="/media/home/kkrn_icon_user_11.png" alt="デフォルトアイコン" style="width:70px; height:70px; border-radius:50%;">
+                {% endif %}
+                <p class="author">{{ post.author }}</p>
+            {% endif %}
+        {% endfor %}
+    </li>
+
+  </article>
+  {% endfor %}
+</section>
+
+<h2>タグ別人気記事</h2>
+<section class="tag-popular-posts">
+  {% for tag_key, tag_info in tag_popular_posts.items %}
+  <div class="tag-block">
+    <h3>{{ tag_info.name }}</h3>
+    <div class="posts-grid">
+      {% for post in tag_info.posts %}
+      <article class="post-card" tabindex="0">
+        <a href="{% url 'home:home/blog_post_detail' post_pk=post.pk %}">
+          {% if post.image %}
+          <img src="{{ post.image.url }}" alt="画像説明" class="post-image" />
+          {% else %}
+          <img src="/media/home/kkrn_icon_user_11.png" alt="デフォルト画像" class="post-image" />
+          {% endif %}
+          <h4>{{ post.title }}</h4>
+        </a>
+
+        <li>
+            {% for plofile in plofiles %}
+                {% if plofile == post.author  %}
+                    {% if plofile.icon %}
+                        <img src="{{ plofile.icon.url }}" alt="{{ plofile.name|default:'設定されていません' }}のアイコン" style="width:70px; height:70px; border-radius:50%;">
+                    {% else %}
+                        <img src="/media/home/kkrn_icon_user_11.png" alt="デフォルトアイコン" style="width:70px; height:70px; border-radius:50%;">
+                    {% endif %}
+                    <p class="author">{{ post.author }}</p>
+                {% endif %}
+            {% endfor %}
+        </li>
+
+      </article>
+      {% empty %}
+      <p>このタグの人気記事はありません。</p>
+      {% endfor %}
+    </div>
+    <a href="{% url 'home:home/tag_post_list' tag_key=tag_key %}" class="btn btn-primary">このタグの記事一覧へ</a>
+  </div>
+  {% endfor %}
+</section>
+
+<h2>最新記事</h2>
+<section class="posts-grid" aria-label="ブログ記事一覧">
+  {% for post in posts %}
+  <article class="post-card" tabindex="0">
+    <a href="{% url 'home:home/blog_post_detail' post_pk=post.pk %}">
+      {% if post.image %}
+      <img src="{{ post.image.url }}" alt="画像説明" class="post-image" />
+      {% else %}
+      <img src="/media/home/kkrn_icon_user_11.png" alt="デフォルト画像" class="post-image" />
+      {% endif %}
+      <h2>{{ post.title }}</h2>
+    </a>
+
+    <li>
+        {% for plofile in plofiles %}
+            {% if plofile == post.author  %}
+                {% if plofile.icon %}
+                    <img src="{{ plofile.icon.url }}" alt="{{ plofile.name|default:'設定されていません' }}のアイコン" style="width:70px; height:70px; border-radius:50%;">
+                {% else %}
+                    <img src="/media/home/kkrn_icon_user_11.png" alt="デフォルトアイコン" style="width:70px; height:70px; border-radius:50%;">
+                {% endif %}
+                <p class="author">{{ post.author }}</p>
+            {% endif %}
+        {% endfor %}
+    </li>
+
+  </article>
+  {% endfor %}
+</section>
+
+{% endblock %}

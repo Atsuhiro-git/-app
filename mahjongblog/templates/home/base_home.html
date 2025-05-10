@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>雀士の集い</title>
+  <style>
+    /* リセット＆ベース */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Helvetica Neue", Arial, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* === ヘッダー === */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #000; /* 黒ベース */
+      padding: 0.75rem 1.5rem;
+      color: #eee;
+      box-shadow: 0 2px 6px rgba(255, 255, 255, 0.1);
+      position: sticky;
+      top: 0;
+      z-index: 2000;
+    }
+
+    /* ロゴ */
+    .blog-logo {
+      font-size: 1.5rem;
+      font-weight: 900;
+      color: #f0c000; /* ゴールド系アクセント */
+      font-family: "Yu Gothic UI", "Segoe UI", sans-serif;
+      user-select: none;
+      cursor: default;
+      letter-spacing: 0.1em;
+      text-shadow: 0 0 4px #f0c000aa;
+    }
+
+    /* 中央ナビ */
+    .header-center {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      gap: 1.4rem;
+    }
+
+    .header-center a {
+      color: #eee;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1rem;
+      padding: 0.35rem 0.15rem;
+      position: relative;
+      transition: color 0.3s ease;
+    }
+
+    .header-center a::after {
+      content: "";
+      position: absolute;
+      bottom: -3px;
+      left: 0;
+      width: 0%;
+      height: 2px;
+      background: #f0c000;
+      transition: width 0.3s ease;
+      border-radius: 2px;
+    }
+
+    .header-center a:hover,
+    .header-center a:focus {
+      color: #f0c000;
+      outline: none;
+    }
+
+    .header-center a:hover::after,
+    .header-center a:focus::after {
+      width: 100%;
+    }
+
+    /* 右ログインボタン */
+    button {
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      position: relative;
+      border-radius: 50%;
+      transition: box-shadow 0.3s ease;
+    }
+
+    button:focus-visible {
+      outline-offset: 3px;
+      outline: 2px solid #f0c000;
+    }
+
+    button:hover,
+    button:focus {
+      box-shadow: 0 0 8px 3px #f0c000bb;
+    }
+
+    .accounts-button {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      object-fit: cover;
+      display: block;
+      filter: drop-shadow(0 0 2px #f0c000cc);
+      transition: filter 0.3s ease;
+    }
+
+    button:hover .accounts-button,
+    button:focus .accounts-button {
+      filter: drop-shadow(0 0 5px #f0c000ff);
+    }
+
+    /* === フッター === */
+    footer {
+      background-color: #000;
+      color: #ccc;
+      text-align: center;
+      padding: 1.5rem 1rem;
+      font-size: 0.9rem;
+      margin-top: auto;
+      box-shadow: inset 0 1px 0 #222;
+      user-select: none;
+      bottom: 0;
+    }
+
+    footer a {
+      color: #f0c000;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.25s ease;
+    }
+
+    footer a:hover,
+    footer a:focus {
+      color: #fff;
+      outline: none;
+      text-decoration: underline;
+    }
+
+    /*ポップアップ本体*/
+    .profile {
+      position: fixed;
+      top: 0;
+      right: -400px; /* 初期は画面外 */
+      width: 400px;
+      height: 100vh;
+      background: black;
+      box-shadow: -4px 0 12px rgba(0,0,0,0.2);
+      transition: right 0.3s ease;
+      z-index: 1100;
+      display: flex;
+      flex-direction: column;
+      overflow-y: auto;
+      color: #eee;
+    }
+      /* オーバーレイ（背景暗転） */
+      .overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0,0,0,0.4);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s ease;
+        z-index: 1000;
+      }
+      .overlay.active {
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      #hobby {
+        margin-top: 30px;
+        border-bottom: 1px solid white;
+      }
+      .profile-button p {
+        color: white;
+        font-size: 35px;
+      }
+      .profile-button li {
+        color: white;
+        font-size: 30px;
+        margin-bottom: 0.9rem;
+      }
+
+      .profile-button li a {
+        color: #f0c000;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 1.5rem;
+        transition: color 0.25s ease;
+        display: inline-block;
+      }
+      
+      .profile-button li a:hover,
+      .profile-button li a:focus {
+        color: #eee;
+        outline: none;
+        text-decoration: underline;
+      }
+
+      .circle {
+        background-color: #316970;
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        margin: auto;
+        p {
+          position: relative;
+          top: 35px;
+          left: 23px;
+        }
+      }
+    
+      /* 閉じるボタン */
+    .close-btn {
+      background: transparent;
+      border: none;
+      color: white;
+      font-size: 1.5rem;
+      cursor: pointer;
+      line-height: 1;
+    }
+    .profile.active{
+      right: 0;
+    }
+
+    /* レスポンシブ対応 */
+    @media (max-width: 480px) {
+      header {
+        flex-wrap: wrap;
+        padding: 0.75rem 1rem;
+        justify-content: center;
+      }
+
+      .header-center {
+        flex-basis: 100%;
+        justify-content: space-around;
+        margin: 0.5rem 0 0 0;
+      }
+
+      .blog-logo {
+        flex-basis: 100%;
+        text-align: center;
+        margin-bottom: 0.3rem;
+      }
+
+      .profile-overlay {
+        width: 90vw;
+        padding: 1.5rem 1.8rem;
+      }
+      .close-btn {
+        top: 8px;
+        right: 12px;
+        font-size: 1.8rem;
+      }
+    }
+  </style>
+  {% block head %}{% endblock %}
+</head>
+<body>
+  <header>
+    <h2 class="blog-logo">雀士の集い</h2>
+
+    <nav class="header-center" aria-label="メインナビゲーション">
+      <a href="/top">トップ</a>
+      <a href="/tag/majan">麻雀入門</a>
+      <a href="/tag/zadaku">座学</a>
+      <a href="/tag/haifu">牌譜検討</a>
+      <a href="/tag/other">その他</a>
+    </nav>
+
+    <button>
+      <img src="/media/home/kkrn_icon_user_11.png" alt="アカウントボタン" class="accounts-button">
+    </button>
+
+      <!-- オーバーレイ -->
+  <div class="overlay" id="overlay" tabindex="-1"></div>
+
+    <div class="profile">
+      <button class="close-btn" id="closeBtn" aria-label="閉じる">&times;</button>
+      {% if request.user.is_authenticated %}
+      <ul class="profile-button">
+        <p id="hobby">投稿</p>
+        <li>
+          <a href="{% url 'post_create' user_id=request.user.id %}">投稿する</a>
+        </li>
+        <li>
+          <a href="{% url 'user_post_list' user_id=request.user.id %}">投稿一覧</a>
+        </li>
+        <li>
+          <a href="{% url 'account_detail' user_id=request.user.id%}">アカウント情報</a>
+        </li>
+        <li>
+          <li>{{user.get_username}}でログインしています</li>
+          <li><a href="/accounts/logout/">ログアウト</a></li>
+          {% else %}
+          <li><a href="/accounts/login/">ログイン</a></li>
+          {% endif %}
+        </li>
+      </ul>
+    </div>
+  </header>
+
+  {% block body %}{% endblock %}
+
+  <footer>
+    <p>© 2025 雀士の集い. All rights reserved.</p>
+    <p>
+      <a href="/privacypolicy">プライバシーポリシー</a> | 
+      <a href="/terms_of_service">利用規約</a> | 
+      <a href="/contact">お問い合わせ</a>
+    </p>
+  </footer>
+
+<script>
+  const content = document.querySelector(".profile");
+  const btn = document.querySelector(".accounts-button");
+  const closeBtn = document.getElementById('closeBtn');
+  const overlay = document.getElementById('overlay');
+
+  btn.addEventListener("click", () => {
+    content.classList.add("active");
+    overlay.classList.add('active');
+  });
+    // ポップアップを閉じる関数
+  closeBtn.addEventListener("click", () => {
+    content.classList.remove('active');
+    overlay.classList.remove('active');
+  });
+
+    // オーバーレイクリックでも閉じる
+  overlay.addEventListener('click', () => {
+    content.classList.remove('active');
+    overlay.classList.remove('active');
+  });
+
+</script>
+</body>
+</html>

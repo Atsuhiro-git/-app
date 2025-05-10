@@ -1,0 +1,174 @@
+/* post_detail.css */
+
+body {
+    background-color: #f8f9fa;
+    font-family: 'Noto Sans JP', sans-serif;
+    color: #5d4037;
+    padding: 2.5rem 1rem;
+    line-height: 1.75;
+}
+
+/* 記事全体のコンテナ */
+.post-detail {
+    max-width: 900px;
+    width: 900px;
+    margin: 0 auto 3rem auto;
+    background: #fff;
+    border-radius: 14px;
+    padding: 2.5rem 3rem;
+    box-shadow: 0 2px 12px rgba(56, 142, 60, 0.1), 0 1.5px 7px rgba(0,0,0,0.04);
+    border: 1px solid #e0e0e0;
+}
+
+/* 記事タイトル */
+.post-detail h1 {
+    font-size: 2.4rem;
+    color: #388e3c;
+    font-weight: 900;
+    margin-bottom: 0.6rem;
+    letter-spacing: 0.1em;
+}
+
+/* 投稿日時 */
+.post-date {
+    font-size: 0.9rem;
+    color: #999;
+    margin-bottom: 1.8rem;
+    font-weight: 600;
+}
+
+/* 記事本文 */
+.post-content {
+    font-size: 1.15rem;
+    color: #5d4037;
+    border: 1.5px solid #ece0b3;
+    border-radius: 8px;
+    padding: 1.8rem 2rem;
+    white-space: pre-wrap;
+    margin-bottom: 2rem;
+}
+
+/* カテゴリ */
+.post-detail p {
+    font-weight: 600;
+    color: #388e3c;
+    letter-spacing: 0.06em;
+    margin-top: 0;
+}
+
+/* 「一覧に戻る」リンクの親ラッパー */
+.link-wrapper {
+    max-width: 900px;
+    margin: 0 auto 1.5rem auto; /* 中央寄せ＋下に余白 */
+    display: flex;
+    justify-content: flex-end; /* 右寄せ */
+}
+
+/* リンクのスタイル */
+.link-wrapper a {
+    background-color: #388e3c;
+    color: #ece0b3;
+    padding: 0.7em 1.8em;
+    border-radius: 20px;
+    font-weight: bold;
+    letter-spacing: 0.05em;
+    text-decoration: none;
+    box-shadow: 0 1px 5px rgba(56, 142, 60, 0.25);
+    transition: background-color 0.2s ease;
+}
+
+.link-wrapper a:hover {
+    background-color: #256029;
+}
+
+/* おすすめ記事セクション */
+.recommended-posts {
+    max-width: 900px;
+    width: 900px;
+    margin: 0 auto 4rem auto;
+    background: #fff;
+    border-radius: 14px;
+    padding: 2rem 3rem;
+    border: 1px solid #e0e0e0;
+    box-shadow: 0 2px 12px rgba(56, 142, 60, 0.08), 0 1.5px 8px rgba(0,0,0,0.03);
+}
+
+.recommended-posts h2 {
+    color: #388e3c;
+    font-weight: 900;
+    margin-bottom: 1.6rem;
+    letter-spacing: 0.1em;
+    font-size: 1.8rem;
+}
+
+/* おすすめ記事リスト */
+.recommended-posts ul {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.6rem;
+}
+
+.recommended-posts li {
+    background: #f2ede2;
+    border: 1.5px solid #ece0b3;
+    border-radius: 10px;
+    width: calc(50% - 0.8rem);
+    box-sizing: border-box;
+    padding: 1rem;
+    transition: box-shadow 0.2s ease;
+}
+
+.recommended-posts li:hover {
+    box-shadow: 0 4px 10px rgba(56, 142, 60, 0.18);
+}
+
+/* リンク全体をクリック可能に */
+.recommended-posts a {
+    text-decoration: none;
+    color: #5d4037;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+/* おすすめ記事の画像 */
+.recommended-posts img {
+    border-radius: 8px;
+    object-fit: cover;
+    width: 100px;
+    height: 70px;
+    flex-shrink: 0;
+}
+
+/* おすすめ記事タイトル */
+.recommended-posts a:hover {
+    color: #388e3c;
+}
+
+/* 小画面対応 */
+@media (max-width: 768px) {
+    .recommended-posts ul {
+        flex-direction: column;
+    }
+
+    .recommended-posts li {
+        width: 100%;
+    }
+
+    .post-detail {
+        padding: 2rem 1.5rem;
+    }
+
+    .recommended-posts {
+        padding: 1.5rem 1.5rem;
+    }
+    
+    .link-wrapper {
+        justify-content: center; /* スマホは中央寄せ */
+    }
+
+}

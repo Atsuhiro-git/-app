@@ -1,0 +1,14 @@
+{% extends 'templates/home/base_home.html' %}
+{% load static %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'registration/post_list.css' %}">
+{% endblock %}
+
+{% block body %}
+<div class="post_list">
+    <p>こんにちは{{user.get_username}}</p>
+    <p>ログインが完了しました</p>
+    <a href="/top">ホームへ</a>
+</div>
+{% endblock %}

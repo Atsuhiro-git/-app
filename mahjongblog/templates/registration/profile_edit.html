@@ -1,0 +1,21 @@
+{% extends 'templates/home/base_home.html' %}
+{% load static %}
+
+{% block head %}
+    <link rel="stylesheet" href="/static_mahjong/registration/profile_edit.css" />
+{% endblock %}
+
+{% block body %}
+<div style="max-width:400px; margin:20px auto;">
+    <h1>プロフィール編集</h1>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form_username.as_p }}
+        {{ form.as_p }}
+
+        <button type="submit">保存する</button>
+    </form>
+
+    <p><a href="{% url 'account_detail' user_id=request.user.id%}">プロフィールに戻る</a></p>
+</div>
+{% endblock %}

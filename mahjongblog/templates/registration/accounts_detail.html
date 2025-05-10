@@ -1,0 +1,28 @@
+{% extends 'templates/home/base_home.html' %}
+
+{% block head %}
+    <meta charset="UTF-8" />
+    <title>アカウントページ</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/static_mahjong/registration/accounts_detail.css">
+{% endblock %}
+
+{% block body %}
+<div class="account-profile">
+    <h1>{{ account_user.username|default:'未登録です' }} さんのプロフィール</h1>
+
+    {% if account_user.icon %}
+        <img src="{{ account_user.icon.url }}" alt="{{ account_user.username|default:account_user.username }}のアイコン" style="width:150px; height:150px; border-radius:50%;">
+    {% else %}
+        <img src="/media/home/kkrn_icon_user_11.png" alt="デフォルトアイコン" style="width:150px; height:150px; border-radius:50%;">
+    {% endif %}
+
+    <p><strong>名前：</strong> {{ account_user.username|default:"未登録" }}</p>
+    <p><strong>ひとこと：</strong> {{ account_user.profile_message|default:"特にありません" }}</p>
+</div>
+<div class="link-area">
+    <a href="{% url 'profile_edit' user_id=request.user.id %}">プロフィール変更</a>
+    <a href="/top">トップへ</a>
+</div>
+
+{% endblock %}

@@ -1,0 +1,109 @@
+/* post_delete_confirm.css */
+
+body {
+    background-color: #f8f9fa;
+    font-family: 'Noto Sans JP', sans-serif;
+    padding: 2.5rem 1rem;
+    color: #5d4037;
+}
+
+/* ページタイトル */
+.check-h1 {
+    text-align: center;
+    color: #388e3c;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+    letter-spacing: 0.12em;
+    text-shadow: 1px 1px 0 #fff;
+}
+
+/* 削除確認メッセージ */
+.check-p{
+    max-width: 600px;
+    margin: 0 auto 2rem auto;
+    font-size: 1.1em;
+    letter-spacing: 0.05em;
+    color: #5d4037;
+    text-align: center;
+}
+
+/* 投稿タイトル */
+.check-h3 {
+    max-width: 600px;
+    margin: 0 auto 1rem auto;
+    color: #388e3c;
+    font-weight: 700;
+    text-align: center;
+    letter-spacing: 0.07em;
+}
+
+/* 投稿内容 */
+
+
+/* フォーム全体 */
+form {
+    max-width: 600px;
+    width: 900px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+/* 削除ボタン（btn-dangerに準拠） */
+.btn-danger {
+    background-color: #d32f2f;
+    border: none;
+    padding: 0.8em 2.2em;
+    font-weight: bold;
+    color: #fff;
+    border-radius: 20px;
+    letter-spacing: 0.05em;
+    box-shadow: 0 1px 3px rgba(211, 47, 47, 0.3);
+    cursor: pointer;
+    transition: background-color 0.15s ease;
+}
+
+.btn-danger:hover {
+    background-color: #9a2424;
+}
+
+/* キャンセルボタンは既存btn-secondaryを想定 */
+.btn-secondary {
+    background-color: #ece0b3;
+    border-color: #ece0b3;
+    color: #5d4037;
+    font-weight: bold;
+    border-radius: 20px;
+    min-width: 120px;
+    padding: 0.8em 2em;
+    letter-spacing: 0.05em;
+    box-shadow: 0 1px 3px rgba(56, 142, 60, 0.07);
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    transition: background 0.15s, color 0.15s;
+}
+
+.btn-secondary:hover {
+    background-color: #fbc02d;
+    color: #fff;
+    border-color: #fbc02d;
+}
+
+/* スマホ対応 */
+@media (max-width: 576px) {
+    body {
+        padding: 1rem 0.5rem;
+    }
+    form {
+        flex-direction: column;
+        gap: 0.8rem;
+    }
+    .btn-danger, .btn-secondary {
+        width: 100%;
+        min-width: unset;
+        padding: 1rem 0;
+        font-size: 1.1em;
+    }
+}
