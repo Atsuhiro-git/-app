@@ -6,8 +6,8 @@ from django.conf import settings
 import bleach
 from bleach.css_sanitizer import CSSSanitizer
 
+#記事本文作成フォーム
 class HTMLField(forms.CharField):
-
     def __init__(self, *args, **kwargs):
         super(HTMLField, self).__init__(*args, **kwargs)
         self.widget = SummernoteWidget()
@@ -16,7 +16,8 @@ class HTMLField(forms.CharField):
     def to_python(self, value):
         value       = super(HTMLField, self).to_python(value)
         return bleach.clean(value, tags=settings.ALLOWED_TAGS, attributes=settings.ATTRIBUTES, css_sanitizer=CSSSanitizer())
-    
+
+#記事フォーム
 class PostForm(forms.ModelForm):
     # このカテゴリーに属さない投稿を複数選択できるフィールドを追加
     add_posts = forms.ModelMultipleChoiceField(
@@ -44,13 +45,15 @@ class PostForm(forms.ModelForm):
             else:
                 self.fields['add_posts'].queryset = Post.objects.all()
     
-        
+
+#カテゴリーフォーム       
 class CategoryForm(forms.ModelForm):
 
     class Meta:
         model = Category
         fields = ['name']  # 'name'のみは元々のフィールド
-        
+
+#カテゴリー名フォーム        
 class CategoryNameForm(forms.ModelForm):
     class Meta:
         model = Category
@@ -62,6 +65,7 @@ class CategoryNameForm(forms.ModelForm):
             'name': 'カテゴリー名',
         }
 
+#投稿のトップ画像フォーム
 class PostImageForm(forms.ModelForm):
     class Meta:
         model = Post

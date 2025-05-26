@@ -5,6 +5,7 @@ from django.contrib.auth import get_user_model
 import uuid
 from django.conf import settings
 
+#カテゴリーモデル
 class Category(models.Model):
     name = models.CharField(max_length=50)
     number = models.PositiveIntegerField(verbose_name='番号', unique=True, blank=True, null=True)
@@ -24,6 +25,7 @@ class Category(models.Model):
     def __str__(self):
         return self.name
 
+#投稿記事モデル
 class Post(models.Model):
     TAG_CHOICES = [
         ('majan', '麻雀入門'),

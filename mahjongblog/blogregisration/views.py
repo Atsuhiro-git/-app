@@ -57,6 +57,7 @@ def post_create(request, user_id):
 
     return render(request, 'templates/blogregisration/post_form.html', {'form': post_form})
 
+#投稿記事の詳細
 @login_required
 def post_delete(request, post_pk):
     post = get_object_or_404(Post, pk=post_pk)
@@ -67,6 +68,7 @@ def post_delete(request, post_pk):
 
     return render(request, 'templates/blogregisration/post_confirm_delete.html', {'post': post})
 
+#投稿記事一覧
 @login_required
 def post_list(request, user_id):
     user = get_object_or_404(User, pk=user_id)
@@ -90,6 +92,7 @@ def post_list(request, user_id):
         'user_uuid' : user_uuid,
     })
 
+#投稿物の編集
 @login_required
 def post_edit(request, post_pk):
     post = get_object_or_404(Post, pk=post_pk)
@@ -134,6 +137,7 @@ def category_create(request,user_id):
         'posts_with_category' : posts_with_category
         })
 
+#カテゴリーの消去
 @login_required
 def category_delete(request, category_number_id, user_id):
     category = get_object_or_404(Category, number=category_number_id)
@@ -177,6 +181,7 @@ def category_edit(request, category_number_id, user_id):
         'form': form,
     })
 
+#カテゴリーに記事を追加
 @require_POST
 def category_add_post(request, category_number_id, user_id, post_pk):
     print('aa')
@@ -194,6 +199,7 @@ def category_add_post(request, category_number_id, user_id, post_pk):
     except Post.DoesNotExist:
         return JsonResponse({'success': False, 'error': 'post not found'})
 
+#カテゴリーから記事を消去
 @require_POST
 def category_remove_post(request, category_number_id, user_id,post_pk):
     post_id = request.POST.get('post_id')
@@ -226,6 +232,7 @@ def category_list(request,user_id):
         'categories' : categories
         })
 
+#カテゴリー名の編集
 @login_required
 def category_name_edit(request, category_number_id, user_id):
     category = get_object_or_404(Category, pk=category_number_id)
